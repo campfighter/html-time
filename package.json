@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "eleventy --serve",
-    "build": "eleventy"
+    "build": "eleventy",
+    "test": "jest"
   },
   "dependencies": {
     "@11ty/eleventy": "^0.5.0",
@@ -14,5 +15,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/philhawksworth/html-time"
+  },
+  "devDependencies": {
+    "dotenv": "^6.2.0",
+    "jest": "^24.1.0"
   }
 }
