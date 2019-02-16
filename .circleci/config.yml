@@ -25,11 +25,11 @@ jobs:
       - image: circleci/node:8
     steps:
       - run:
-        name: Install awscli
-        command: sudo pip install awscli
+          name: Install awscli
+          command: sudo pip install awscli
       - run:
-        name: Deploy to S3
-        command: aws s3 sync dist s3://mentorship-htmltime --delete
+          name: Deploy to S3
+          command: aws s3 sync dist s3://mentorship-htmltime --delete
 
 workflows:
   version: 2
