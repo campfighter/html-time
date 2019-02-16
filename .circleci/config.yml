@@ -32,7 +32,7 @@ jobs:
           command: sudo pip install awscli
       - run:
           name: Deploy to S3
-          command: aws s3 sync dist s3://mentorship-htmltime --delete
+          command: aws s3 sync dist/ s3://mentorship-htmltime --delete
 
 workflows:
   version: 2
