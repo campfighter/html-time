@@ -22,20 +22,29 @@ jobs:
       - run:
           name: Build Dist Folder
           command: yarn build
+      - persist_to_workspace:
+          root: /
+          paths:
+            - dist
 
   deploy:
     docker:
       - image: circleci/python:3
     steps:
       - run:
-          name: Install awscli
-          command: sudo pip install awscli
+          name: Check Location
+          command: ls
+      - attach_workspace:
+          at: /
       - run:
           name: Check Location
           command: ls
       - run:
+          name: Install awscli
+          command: sudo pip install awscli
+      - run:
           name: Deploy to S3
-          command: aws s3 sync home/ubuntu/dist/ s3://mentorship-htmltime --delete
+          command: aws s3 sync dist/ s3://mentorship-htmltime --delete
 
 workflows:
   version: 2
