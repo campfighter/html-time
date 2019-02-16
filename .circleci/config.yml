@@ -31,8 +31,8 @@ jobs:
           name: Install awscli
           command: sudo pip install awscli
       - run:
-          name: Get PWD
-          command: echo $PWD
+          name: Check Location
+          command: ls
       - run:
           name: Deploy to S3
           command: aws s3 sync home/ubuntu/dist/ s3://mentorship-htmltime --delete
