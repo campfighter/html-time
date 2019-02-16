@@ -2,7 +2,41 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/node:8
     steps:
       - checkout
-      - run: echo "A silent hello"
+      - restore_cache:
+          key: yarn-cache-v1-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          key: yarn-cache-v1-{{ checksum "yarn.lock" }}
+          paths:
+            - home/circleci/.yarn
+      - run:
+          name: Run Tests
+          command: yarn test
+
+  deploy:
+    docker:
+      - image: circleci/node:8
+      steps:
+        -run:
+          name: Install awscli
+          command: sudo pip install awscli
+        -run:
+          name: Deploy to S3
+          command: aws s3 sync dist s3://mentorship-htmltime --delete
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
