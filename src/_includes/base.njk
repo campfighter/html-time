@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% set css %}{% include "main.css" %}{% endset -%}
     <style>{{ css | cssmin | safe }}</style>
-    <link rel="canonical" href="https://setyourwatchby.netlify.com{{ page.url }}" />
     {%- if keepfresh %}
     <meta http-equiv="refresh" content="30">
     {%- endif %}
@@ -20,9 +19,10 @@
     {{ content | safe }}
     </div>
     <div class="deets">
-      <p>Set your watch by Netlify
+      <p>Set your watch by Netlify (ported to AWS)
+      <marquee>In Progress</marquee>
       {% if zone %}(<a href="/timezones">{{ zone.location }}</a>){% endif %}
-      <br /><a href="https://github.com/philhawksworth/html-time">Forked</a> by <a href="https://github.com/campfighter">Steven Davis</a> for a <a href="https://github.com/dialexa">Dialexa</a> mentorship project.</p>
+      <br /><a href="https://github.com/philhawksworth/html-time">Original</a> forked by <a href="https://github.com/campfighter">Steven Davis</a> for a <a href="https://github.com/dialexa">Dialexa</a> mentorship project.</p>
     </div>
   </body>
 </html>
