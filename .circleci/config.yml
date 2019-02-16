@@ -38,7 +38,7 @@ jobs:
           name: Check Location
           command: ls
       - attach_workspace:
-          at: /
+          at: /tmp/workspace
       - run:
           name: Check Location
           command: ls
@@ -47,7 +47,7 @@ jobs:
           command: sudo pip install awscli
       - run:
           name: Deploy to S3
-          command: aws s3 sync dist/ s3://mentorship-htmltime --delete
+          command: aws s3 sync /tmp/workspace/dist/ s3://mentorship-htmltime --delete
 
 workflows:
   version: 2
