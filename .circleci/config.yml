@@ -22,7 +22,7 @@ jobs:
 
   deploy:
     docker:
-      - image: circleci/node:8
+      - image: circleci/python:3
     steps:
       - run:
           name: Install awscli
