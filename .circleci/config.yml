@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/node:8
     environment:
-      PASS: true
+      PASS: false
     steps:
       - checkout
       - restore_cache:
